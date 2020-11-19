@@ -1,0 +1,41 @@
+<!DOCTYPE hmtl>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="/template.css" />
+</h:head>
+<h:body>
+	<ui:insert name="cabecalho">
+		<h1>Cabeçalho</h1>
+	</ui:insert>
+	
+	<ui:insert name="menu">
+	
+		<nav class="navbar navbar-dark bg-dark">
+		<h:outputLabel value="ECursos" style="color: white"/>
+			<h:commandLink value="Login" action="#{loginController.paginaLogin()}" />
+			<h:commandLink value="Cadastro"
+				action="cadastroCursos.xhtml?faces-redirect=true" />
+			<h:commandLink value="Lista" />
+		</nav>
+		
+	</ui:insert>
+	<ui:insert name="conteudo">
+		<h1>Conteúdo</h1>
+	</ui:insert>
+	<ui:insert name="rodape">
+		<div class="box footer" style="text-align: center" >
+			<h:outputLabel
+				value="2020 - Brayan Mota - Todos os direitos reservados" />
+		</div>
+	</ui:insert>
+
+</h:body>
+</html>

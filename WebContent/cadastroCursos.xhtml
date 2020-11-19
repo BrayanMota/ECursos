@@ -1,0 +1,117 @@
+<!DOCTYPE hmtl>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
+<ui:composition template="/template.xhtml">
+	<ui:define name="cabecalho">
+		<link rel="stylesheet"
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+		<h:outputStylesheet library="css" name="cadastro.css" />
+		<title>Cadastro de Cursos</title>
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<div class="form">
+			<h:form>
+				<h:panelGrid>
+					<div class="card">
+						<div class="card-body">
+							<h5 class="card-title">Cadastre o curso</h5>
+							<h:messages errorStyle="color: red" infoStyle="color: green"
+								globalOnly="true" />
+
+							<h:outputLabel value="Nome do Curso:">
+								<span style="color: tomato">*</span>
+							</h:outputLabel>
+							<h:panelGroup>
+								<h:inputText id="itNomeCurso"
+									value="#{cursoController.entity.nomeCurso}" required="true"
+									requiredMessage="O nome do curso deve ser informado."
+									styleClass="form-control" />
+								<h:message for="itNomeCurso" style="color: red" />
+							</h:panelGroup>
+
+							<h:outputLabel value="Carga Horária:">
+								<span style="color: tomato">*</span>
+							</h:outputLabel>
+							<h:panelGroup>
+								<h:inputText id="itCargaHoraria"
+									value="#{cursoController.entity.cargaHoraria}" required="true"
+									requiredMessage="A carga horária deve ser informada."
+									styleClass="form-control" />
+								<h:message for="itCargaHoraria" style="color: red" />
+							</h:panelGroup>
+
+
+							<h:outputLabel value="Data de Lançamento:">
+								<span style="color: tomato">*</span>
+							</h:outputLabel>
+							<input type="date" id="date" placeholder="Data de Lançamento"
+								jsf:value="#{cursoController.entity.dataCurso}" name="date"
+								required="true">
+							<f:convertDateTime pattern="yyyy-MM-dd" type="localDate" />
+							</input>
+
+							<h:outputLabel value="Nome do Professor:">
+								<span style="color: tomato">*</span>
+							</h:outputLabel>
+							<h:panelGroup>
+								<h:inputText id="itNomeProfessor"
+									value="#{cursoController.entity.nomeProfessor}" required="true"
+									requiredMessage="O nome do professor deve ser informado."
+									styleClass="form-control" />
+								<h:message for="itNomeProfessor" style="color: red" />
+							</h:panelGroup>
+
+							<h:outputLabel value="Nivel do Curso:">
+								<span style="color: tomato">*</span>
+							</h:outputLabel>
+							<h:panelGroup>
+								<h:selectOneRadio id="itNivel"
+									value="#{cursoController.entity.nivelCurso}" required="true"
+									requiredMessage="O nível do curso deve ser informado.">
+									<f:selectItems value="#{cursoController.listaNivel}" var="obj"
+										itemLabel="#{obj.label}" />
+								</h:selectOneRadio>
+								<h:message for="itNivel" style="color: red" />
+							</h:panelGroup>
+
+							<h:outputLabel value="Ensino do Curso:">
+								<span style="color: tomato">*</span>
+							</h:outputLabel>
+							<h:panelGroup>
+								<h:selectOneRadio id="itEnsino"
+									value="#{cursoController.entity.ensino}" required="true"
+									requiredMessage="O tipo de ensino deve ser informado.">
+									<f:selectItems value="#{cursoController.listaEnsino}" var="obj"
+										itemLabel="#{obj.label}" />
+								</h:selectOneRadio>
+								<h:message for="itEnsino" style="color: red" />
+							</h:panelGroup>
+
+							<h:outputLabel value="Valor do Curso:">
+								<span style="color: tomato">*</span>
+							</h:outputLabel>
+							<h:panelGroup>
+								<h:inputText id="itValor"
+									value="#{cursoController.entity.valorCurso}" required="true"
+									requiredMessage="O valor do curso deve ser informado."
+									styleClass="form-control" />
+								<h:message for="itValor" style="color: red" />
+							</h:panelGroup>
+						</div>
+					</div>
+				</h:panelGrid>
+
+				<h:commandButton value="Cadastrar"
+					actionListener="#{cursoController.incluir()}" />
+
+			</h:form>
+		</div>
+	</ui:define>
+	</ui:composition>
+</html>

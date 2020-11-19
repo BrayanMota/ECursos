@@ -1,0 +1,17 @@
+@charset "utf-8";
+
+body{
+	background-color: #f5f5f5;
+}
+.form {
+	margin-top: 10%;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+div.form form{
+	width: 100%;
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+}
